@@ -30,7 +30,7 @@ func (s *bookCollectionService) CreateBookCollection(ctx context.Context, req Bo
 		Price:    req.Price,
 	})
 	if err != nil {
-		slog.Error("error create book collection", err)
+		slog.Error("error create book collection", slog.String("error", err.Error()))
 
 		return BookCollectionResponse{}, err
 	}

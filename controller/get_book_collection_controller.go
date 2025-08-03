@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"log/slog"
 	"net/http"
 	"strconv"
 
@@ -19,7 +20,10 @@ func (ctrl *bookCollectionController) GetBookCollectionByFilter(c *gin.Context) 
 	if idStr != "" {
 		id, err = strconv.Atoi(idStr)
 		if err != nil {
+			slog.Error("parse id fail", err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+
+			return
 		}
 	}
 
@@ -27,7 +31,10 @@ func (ctrl *bookCollectionController) GetBookCollectionByFilter(c *gin.Context) 
 	if volStr != "" {
 		vol, err = strconv.Atoi(volStr)
 		if err != nil {
+			slog.Error("parse vol fail", err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+
+			return
 		}
 	}
 
@@ -35,8 +42,11 @@ func (ctrl *bookCollectionController) GetBookCollectionByFilter(c *gin.Context) 
 	if priceStr != "" {
 		price, err = strconv.ParseFloat(priceStr, 64)
 		if err != nil {
+			slog.Error("parse price fail", err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+
 		}
+		return
 	}
 
 	resp, err := ctrl.BookCollectionService.GetBookCollectionByFilter(ctx, service.GetBookCollection{
@@ -50,7 +60,10 @@ func (ctrl *bookCollectionController) GetBookCollectionByFilter(c *gin.Context) 
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": err.Error(),
 		})
+
+		return
 	}
 
 	c.JSON(http.StatusOK, resp)
+	return
 }

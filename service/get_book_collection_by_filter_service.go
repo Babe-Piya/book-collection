@@ -32,7 +32,7 @@ func (s *bookCollectionService) GetBookCollectionByFilter(ctx context.Context, r
 		Price:    req.Price,
 	})
 	if err != nil {
-		slog.Error("error get book collection by filter", err)
+		slog.Error("error get book collection by filter", slog.String("error", err.Error()))
 
 		return GetBookCollectionResponse{}, err
 	}
