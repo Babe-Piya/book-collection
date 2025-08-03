@@ -1,5 +1,7 @@
 package repositories
 
+//go:generate mockgen -source=book_collection.go -destination=mocks/mock_book_collection.go
+
 import (
 	"context"
 	"time"

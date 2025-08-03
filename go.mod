@@ -7,6 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.10.1
 	github.com/spf13/viper v1.20.1
 	github.com/stretchr/testify v1.10.0
+	go.uber.org/mock v0.5.2
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/gorm v1.30.1
 )
