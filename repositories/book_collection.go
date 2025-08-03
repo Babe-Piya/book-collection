@@ -9,6 +9,7 @@ import (
 
 type BookCollectionRepo interface {
 	CreateBookCollection(ctx context.Context, bookCollection *BookCollection) (*BookCollection, error)
+	GetBookCollectionByFilter(ctx context.Context, filter BookCollection) ([]BookCollection, error)
 }
 
 type bookCollectionRepo struct {

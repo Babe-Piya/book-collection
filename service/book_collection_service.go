@@ -2,11 +2,13 @@ package service
 
 import (
 	"context"
+
 	"github/Babe-piya/book-collection/repositories"
 )
 
 type BookCollectionService interface {
 	CreateBookCollection(ctx context.Context, req BookCollectionRequest) (BookCollectionResponse, error)
+	GetBookCollectionByFilter(ctx context.Context, req GetBookCollection) (GetBookCollectionResponse, error)
 }
 
 type bookCollectionService struct {

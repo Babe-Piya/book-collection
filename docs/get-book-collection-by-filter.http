@@ -1,0 +1,9 @@
+### GET book collections
+GET localhost:8181/api/v1/book-collection
+
+### GET book collections by id
+GET localhost:8181/api/v1/book-collection?id=1
+
+### GET book collections by book_name and volume
+GET localhost:8181/api/v1/book-collection?book_name=vinland saga&volume=1
+###

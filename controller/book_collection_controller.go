@@ -8,6 +8,7 @@ import (
 
 type BookCollectionController interface {
 	CreateBookCollection(c *gin.Context)
+	GetBookCollectionByFilter(c *gin.Context)
 }
 
 type bookCollectionController struct {

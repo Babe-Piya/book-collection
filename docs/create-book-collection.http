@@ -1,5 +1,5 @@
-### GET request to example server
-POST localhost:8181/api/v1/book/create
+### POST create book collection
+POST localhost:8181/api/v1/book-collection/create
 Content-Type: application/json
 
 {
@@ -8,4 +8,16 @@ Content-Type: application/json
   "volume": 1,
   "price": 90
 }
+
+### POST create book collection
+POST localhost:8181/api/v1/book-collection/create
+Content-Type: application/json
+
+{
+  "book_name": "vinland saga",
+  "type": "cartoon",
+  "volume": 2,
+  "price": 90
+}
+
 ###
