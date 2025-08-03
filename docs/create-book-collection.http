@@ -1,0 +1,11 @@
+### GET request to example server
+POST localhost:8181/api/v1/book/create
+Content-Type: application/json
+
+{
+  "book_name": "vinland saga",
+  "type": "cartoon",
+  "volume": 1,
+  "price": 90
+}
+###

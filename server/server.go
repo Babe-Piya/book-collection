@@ -25,7 +25,7 @@ func Start(config *appconfig.AppConfig) (*http.Server, *sql.DB) {
 		log.Fatal(err)
 	}
 	router := gin.Default()
-	Routes(router, gormDB, config)
+	Routes(router, gormDB)
 
 	srv := &http.Server{
 		Addr:    fmt.Sprintf(":%s", config.ServerPort),
