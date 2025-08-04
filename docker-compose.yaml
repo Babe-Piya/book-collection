@@ -1,4 +1,18 @@
 services:
+  go-app:
+    build: .
+    container_name: go-service
+    ports:
+      - "8181:8181"
+    volumes:
+      - ./env/config.yaml:/app/env/config.yaml:ro
+    environment:
+      - CONFIG_PATH=/app/env/config.yaml
+    depends_on:
+      - db
+    networks:
+      - app-network
+    restart: unless-stopped
 
   db:
     image: postgres
@@ -10,9 +24,17 @@ services:
     environment:
       POSTGRES_DB: books
       POSTGRES_PASSWORD: example
+    networks:
+      - app-network
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
