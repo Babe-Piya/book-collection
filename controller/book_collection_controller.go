@@ -10,6 +10,7 @@ type BookCollectionController interface {
 	CreateBookCollection(c *gin.Context)
 	GetBookCollectionByFilter(c *gin.Context)
 	UpdateBookCollectionByID(c *gin.Context)
+	DeleteBookCollectionByID(c *gin.Context)
 }
 
 type bookCollectionController struct {

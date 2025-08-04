@@ -13,6 +13,7 @@ type BookCollectionRepo interface {
 	CreateBookCollection(ctx context.Context, bookCollection *BookCollection) (*BookCollection, error)
 	GetBookCollectionByFilter(ctx context.Context, filter BookCollection) ([]BookCollection, error)
 	UpdateBookCollectionByID(ctx context.Context, bookCollections BookCollection) error
+	DeleteBookCollectionByID(ctx context.Context, id int) error
 }
 
 type bookCollectionRepo struct {

@@ -54,6 +54,20 @@ func (mr *MockBookCollectionRepoMockRecorder) CreateBookCollection(ctx, bookColl
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateBookCollection", reflect.TypeOf((*MockBookCollectionRepo)(nil).CreateBookCollection), ctx, bookCollection)
 }
 
+// DeleteBookCollectionByID mocks base method.
+func (m *MockBookCollectionRepo) DeleteBookCollectionByID(ctx context.Context, id int) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteBookCollectionByID", ctx, id)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// DeleteBookCollectionByID indicates an expected call of DeleteBookCollectionByID.
+func (mr *MockBookCollectionRepoMockRecorder) DeleteBookCollectionByID(ctx, id any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteBookCollectionByID", reflect.TypeOf((*MockBookCollectionRepo)(nil).DeleteBookCollectionByID), ctx, id)
+}
+
 // GetBookCollectionByFilter mocks base method.
 func (m *MockBookCollectionRepo) GetBookCollectionByFilter(ctx context.Context, filter repositories.BookCollection) ([]repositories.BookCollection, error) {
 	m.ctrl.T.Helper()
