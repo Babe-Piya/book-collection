@@ -12,6 +12,7 @@ import (
 type BookCollectionRepo interface {
 	CreateBookCollection(ctx context.Context, bookCollection *BookCollection) (*BookCollection, error)
 	GetBookCollectionByFilter(ctx context.Context, filter BookCollection) ([]BookCollection, error)
+	UpdateBookCollectionByID(ctx context.Context, bookCollections BookCollection) error
 }
 
 type bookCollectionRepo struct {
@@ -31,6 +32,7 @@ type BookCollection struct {
 	Volume    int
 	Price     float64
 	CreatedAt time.Time
+	UpdatedAt time.Time
 }
 
 func (r *BookCollection) TableName() string {

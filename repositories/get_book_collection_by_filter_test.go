@@ -18,7 +18,7 @@ const (
 	mockBookName                           = "mock-book-name"
 	mockType                               = "mock-type"
 	mockVolume                             = 1
-	mockPrice                              = 20
+	mockPrice                              = 20.00
 	sqlGetBookCollectionExpected           = `SELECT * FROM "book_collection" ORDER BY id DESC`
 	sqlGetBookCollectionWithFilterExpected = `SELECT * FROM "book_collection" WHERE id = $1 AND book_name = $2 AND type = $3 AND volume = $4 AND price = $5  ORDER BY id DESC`
 )
@@ -31,8 +31,8 @@ func TestGetBookCollectionByFilterWhenHaveDataShouldReturnData(t *testing.T) {
 	}), &gorm.Config{})
 
 	now := time.Now()
-	mockRows := sqlmock.NewRows([]string{"id", "book_name", "type", "volume", "price", "created_at"}).
-		AddRow(mockID, mockBookName, mockType, mockVolume, mockPrice, now)
+	mockRows := sqlmock.NewRows([]string{"id", "book_name", "type", "volume", "price", "created_at", "updated_at"}).
+		AddRow(mockID, mockBookName, mockType, mockVolume, mockPrice, now, now)
 	sqlMock.ExpectQuery(regexp.QuoteMeta(sqlGetBookCollectionExpected)).WillReturnRows(mockRows)
 
 	repo := NewBookCollection(gormDB)
@@ -46,6 +46,7 @@ func TestGetBookCollectionByFilterWhenHaveDataShouldReturnData(t *testing.T) {
 		Volume:    mockVolume,
 		Price:     mockPrice,
 		CreatedAt: now,
+		UpdatedAt: now,
 	}}
 	assert.NoError(t, err)
 	assert.Equal(t, actual, expected)
@@ -59,8 +60,8 @@ func TestGetBookCollectionByFilterWhenHaveFilterShouldReturnData(t *testing.T) {
 	}), &gorm.Config{})
 
 	now := time.Now()
-	mockRows := sqlmock.NewRows([]string{"id", "book_name", "type", "volume", "price", "created_at"}).
-		AddRow(mockID, mockBookName, mockType, mockVolume, mockPrice, now)
+	mockRows := sqlmock.NewRows([]string{"id", "book_name", "type", "volume", "price", "created_at", "updated_at"}).
+		AddRow(mockID, mockBookName, mockType, mockVolume, mockPrice, now, now)
 	sqlMock.ExpectQuery(regexp.QuoteMeta(sqlGetBookCollectionWithFilterExpected)).WillReturnRows(mockRows)
 
 	repo := NewBookCollection(gormDB)
@@ -81,6 +82,7 @@ func TestGetBookCollectionByFilterWhenHaveFilterShouldReturnData(t *testing.T) {
 		Volume:    mockVolume,
 		Price:     mockPrice,
 		CreatedAt: now,
+		UpdatedAt: now,
 	}}
 	assert.NoError(t, err)
 	assert.Equal(t, actual, expected)

@@ -68,3 +68,17 @@ func (mr *MockBookCollectionRepoMockRecorder) GetBookCollectionByFilter(ctx, fil
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBookCollectionByFilter", reflect.TypeOf((*MockBookCollectionRepo)(nil).GetBookCollectionByFilter), ctx, filter)
 }
+
+// UpdateBookCollectionByID mocks base method.
+func (m *MockBookCollectionRepo) UpdateBookCollectionByID(ctx context.Context, bookCollections repositories.BookCollection) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "UpdateBookCollectionByID", ctx, bookCollections)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// UpdateBookCollectionByID indicates an expected call of UpdateBookCollectionByID.
+func (mr *MockBookCollectionRepoMockRecorder) UpdateBookCollectionByID(ctx, bookCollections any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateBookCollectionByID", reflect.TypeOf((*MockBookCollectionRepo)(nil).UpdateBookCollectionByID), ctx, bookCollections)
+}

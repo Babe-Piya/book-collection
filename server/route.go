@@ -25,4 +25,5 @@ func Routes(r *gin.Engine, db *gorm.DB) {
 	bookCollectApi := r.Group("/api/v1/book-collection")
 	bookCollectApi.POST("/create", bookCollectionController.CreateBookCollection)
 	bookCollectApi.GET("", bookCollectionController.GetBookCollectionByFilter)
+	bookCollectApi.PUT("update/:id", bookCollectionController.UpdateBookCollectionByID)
 }

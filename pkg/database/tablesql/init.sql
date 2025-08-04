@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS book_collection (
     type            VARCHAR(100),
     volume          INT,
     price           DECIMAL(10, 2),
-    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

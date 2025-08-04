@@ -1,0 +1,12 @@
+### PUT request to update book collection
+PUT localhost:8181/api/v1/book-collection/update/1
+Content-Type: application/json
+
+{
+  "book_name": "vinland saga",
+  "type": "cartoon",
+  "volume": 1,
+  "price": 80
+}
+
+###
